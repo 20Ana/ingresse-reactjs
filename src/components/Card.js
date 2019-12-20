@@ -1,25 +1,23 @@
 import React from "react";
 
-import { Card, Row, Col, Container } from "aphrodite-react";
+import { Card, Img, H2, P } from "aphrodite-react";
 
-const CardList = props => {
+const CardView = props => {
+  const customCard = {
+    display: "flex",
+    flexDirection: "column"
+  };
+
   return (
-    <Container>
-      <Row horizontal="left">
-        <Col xs={4} sm={4}>
-          <Card boxShadow>
-            <div>Banner</div>
-            <div className="info">
-              <span>Título</span>
-              <span>Gênero</span>
-              <span>Pôster</span>
-              <span>Favoritar</span>
-            </div>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Card boxShadow style={customCard}>
+      <Img rounded alt="banner" src={props.image} />
+      <div className="info">
+        <H2 center>{props.name}</H2>
+        <P>Genres: {props.genres}</P>
+        <span>Favoritar</span>
+      </div>
+    </Card>
   );
 };
 
-export default CardList;
+export default CardView;

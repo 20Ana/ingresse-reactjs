@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 
 import Home from "./Home";
+import { Container } from "aphrodite-react";
 
 export default class App extends Component {
   render() {
-    return <Home />;
+    return (
+      <Container>
+        <Home />
+      </Container>
+    );
   }
 }
