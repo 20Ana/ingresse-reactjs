@@ -1,22 +1,28 @@
 import React from "react";
 
-import { Card, Img, H3, P } from "aphrodite-react";
+import style from "../styles/card.scss";
 
-const CardView = props => {
+const CardView = ({ image, name, genres }) => {
   const customCard = {
+    cursor: "pointer",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
   };
 
   return (
-    <Card boxShadow style={customCard}>
-      <Img rounded alt="banner" src={props.image} />
-      <div className="info">
-        <H3 center>{props.name}</H3>
-        <P>Genres: {props.genres}</P>
-        <span>Favoritar</span>
+    <>
+      <div className="content">
+        <img src={image} alt="banner" className="image" />
+        <div className="info">
+          <div className="text">
+            <h4>{name}</h4>
+            <small>Genres: {genres}</small>
+          </div>
+        </div>
       </div>
-    </Card>
+    </>
   );
 };
 

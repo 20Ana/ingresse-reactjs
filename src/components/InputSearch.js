@@ -18,12 +18,17 @@ function debounce(func, wait, immediate) {
   };
 }
 
+const customInput = {
+  marginBottom: "2rem",
+  marginTop: "2rem"
+};
+
 const InputSearch = ({ setQuery }) => (
   <Input
     type="text"
     id="search"
-    label="Search show"
-    styles="margin-bottom: 1rem"
+    placeholder="Search..."
+    styles={customInput}
     onChange={debounce(e => setQuery(e.target.value), 300)}
   />
 );

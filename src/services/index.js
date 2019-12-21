@@ -1,18 +1,19 @@
 import axios from "axios";
 
-const api = "http://api.tvmaze.com";
-const imgPlaceholder = "https://via.placeholder.com/210x295";
+const api = "https://api.tvmaze.com";
+const imgPlaceholder = "";
 
 export const search = async query => {
   const result = await axios(`${api}/search/shows?q=${query}`);
+  const { data } = result;
 
-  const shows = result.data.map(s => {
-    s.show.genres =
-      s.show.genres.length > 1 ? s.show.genres.join(", ") : s.show.genres[0];
+  const shows = data.map(s => {
+    const { show } = s;
 
-    s.show.image = s.show.image !== null ? s.show.image.medium : imgPlaceholder;
+    show.genres = genreArrToStr(show.genres);
+    show.image = imageUrl(show.image, show.name);
 
-    return s.show;
+    return show;
   });
 
   return { shows };
@@ -21,7 +22,19 @@ export const search = async query => {
 export const getShow = async id => {
   const result = await axios.get(`${api}/shows/${id}`);
   const { data } = result;
-  data.image = data.image !== null ? data.image.medium : imgPlaceholder;
-  data.genres = data.genres.length > 1 ? data.genres.join(", ") : data.genres;
+  data.image = imageUrl(data.image, data.names);
+  data.genres = genreArrToStr(data.genres);
   return data;
 };
+
+function genreArrToStr(genres) {
+  return genres.length > 0 ? genres.join(", ") : "no genre";
+}
+
+function imageUrl(arr, nameShow) {
+  return arr !== null ? arr.medium : generatePlaceholderImg(nameShow);
+}
+
+function generatePlaceholderImg(name) {
+  return `https://via.placeholder.com/210x295.png/000000/FFFFFF/?text=${name}`;
+}
