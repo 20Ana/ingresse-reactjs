@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = "http://api.tvmaze.com";
-const imgPlaceholder = "https://via.placeholder.com/600";
+const imgPlaceholder = "https://via.placeholder.com/210x295";
+
 export const search = async query => {
   const result = await axios(`${api}/search/shows?q=${query}`);
 
@@ -15,4 +16,12 @@ export const search = async query => {
   });
 
   return { shows };
+};
+
+export const getShow = async id => {
+  const result = await axios.get(`${api}/shows/${id}`);
+  const { data } = result;
+  data.image = data.image !== null ? data.image.medium : imgPlaceholder;
+  data.genres = data.genres.length > 1 ? data.genres.join(", ") : data.genres;
+  return data;
 };

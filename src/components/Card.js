@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, Img, H2, P } from "aphrodite-react";
+import { Card, Img, H3, P } from "aphrodite-react";
 
 const CardView = props => {
   const customCard = {
@@ -12,7 +12,7 @@ const CardView = props => {
     <Card boxShadow style={customCard}>
       <Img rounded alt="banner" src={props.image} />
       <div className="info">
-        <H2 center>{props.name}</H2>
+        <H3 center>{props.name}</H3>
         <P>Genres: {props.genres}</P>
         <span>Favoritar</span>
       </div>
