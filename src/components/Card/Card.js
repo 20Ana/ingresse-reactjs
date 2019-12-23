@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./card.scss";
-import { IMG_PLACEHOLDER_LOADING } from "../../constants";
+import { IMG_PLACEHOLDER_LOADING } from "utils/constants";
 
 function setImagePlaceholder(image) {
   return image ? image : IMG_PLACEHOLDER_LOADING;

@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./list.scss";
-import CardView from "../Card/Card";
+import CardView from "components/Card/Card";
 import { Row, Col } from "aphrodite-react";
 import { useHistory } from "react-router-dom";
 

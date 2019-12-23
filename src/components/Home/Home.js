@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import InputSearch from "../InputSearch/InputSearch";
-import { List } from "../List/List";
-import { search } from "../../services";
+import InputSearch from "components/InputSearch/InputSearch";
+import { List } from "components/List/List";
+import { search } from "services";
 
 export default function Home() {
   const [data, setData] = useState({ shows: [] });

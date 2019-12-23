@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { API, IMG_PLACEHOLDER } from "../constants";
+import { API, IMG_PLACEHOLDER } from "../utils/constants";
 
 export const search = async query => {
   const result = await axios(`${API}/search/shows?q=${query}`);

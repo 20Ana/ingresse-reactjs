@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import "./details.scss";
-import { getShow } from "../../services";
+import { getShow } from "services";
 import { H2, Row, Col } from "aphrodite-react";
-import { IMG_PLACEHOLDER_LOADING } from "../../constants";
+import { IMG_PLACEHOLDER_LOADING } from "utils/constants";
 
 export default function Details({ match }) {
   const [show, setShow] = useState({});
