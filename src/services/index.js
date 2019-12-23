@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const api = "https://api.tvmaze.com";
-const imgPlaceholder = "";
+import { API, IMG_PLACEHOLDER } from "../constants";
 
 export const search = async query => {
-  const result = await axios(`${api}/search/shows?q=${query}`);
+  const result = await axios(`${API}/search/shows?q=${query}`);
   const { data } = result;
 
   const shows = data.map(s => {
@@ -20,21 +19,32 @@ export const search = async query => {
 };
 
 export const getShow = async id => {
-  const result = await axios.get(`${api}/shows/${id}`);
+  const result = await axios.get(`${API}/shows/${id}`);
   const { data } = result;
-  data.image = imageUrl(data.image, data.names);
+  data.image = imageUrl(data.image, data.name);
   data.genres = genreArrToStr(data.genres);
+  data.summary = noSummaryText(data.summary);
+  data.premiered = dateFormatText(data.premiered);
+
   return data;
 };
 
 function genreArrToStr(genres) {
-  return genres.length > 0 ? genres.join(", ") : "no genre";
+  return genres.length > 0 ? genres.join(", ") : "No genre.";
 }
 
 function imageUrl(arr, nameShow) {
   return arr !== null ? arr.medium : generatePlaceholderImg(nameShow);
 }
 
+function noSummaryText(resume) {
+  return resume !== null ? resume : "No summary.";
+}
+
 function generatePlaceholderImg(name) {
-  return `https://via.placeholder.com/210x295.png/000000/FFFFFF/?text=${name}`;
+  return `${IMG_PLACEHOLDER}${name}`;
+}
+
+function dateFormatText(date) {
+  return date ? date : "No date.";
 }

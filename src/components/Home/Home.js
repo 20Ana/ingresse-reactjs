@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import InputSearch from "./InputSearch";
-import { List } from "./List";
-import { search } from "../services";
+import InputSearch from "../InputSearch/InputSearch";
+import { List } from "../List/List";
+import { search } from "../../services";
 
 export default function Home() {
   const [data, setData] = useState({ shows: [] });
@@ -10,7 +10,8 @@ export default function Home() {
 
   const fetchData = async () => {
     const result = await search(query);
-    setData(result);
+
+    if (result !== undefined && result !== null) setData(result);
   };
 
   useEffect(() => {
