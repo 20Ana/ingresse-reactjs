@@ -23,21 +23,23 @@ export default function Details({ match }) {
 
   return (
     <>
-      <Row>
-        <Col xs={12} sm={12}>
-          <div className="content-details">
-            <div className="image-banner">
-              <img src={setImagePlaceholder()} alt="banner" />
+      <div className="animate-fadein">
+        <Row>
+          <Col xs={12} sm={12}>
+            <div className="content-details">
+              <div className="image-banner animate-fadein">
+                <img src={setImagePlaceholder()} alt="banner" />
+              </div>
+              <div className="content-info">
+                <H2 className="title-content">{show.name}</H2>
+                <p>In Theaters: {show.premiered}</p>
+                <p>Genres: {show.genres}</p>
+                <div dangerouslySetInnerHTML={{ __html: show.summary }} />
+              </div>
             </div>
-            <div className="content-info">
-              <H2 className="title-content">{show.name}</H2>
-              <p>In Theaters: {show.premiered}</p>
-              <p>Genres: {show.genres}</p>
-              <div dangerouslySetInnerHTML={{ __html: show.summary }} />
-            </div>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </div>
     </>
   );
 }

@@ -10,7 +10,7 @@ function setImagePlaceholder(image) {
 const CardView = ({ image, name, genres }) => {
   return (
     <>
-      <div className="content">
+      <div className="content animate-fadein">
         <img src={setImagePlaceholder(image)} alt="banner" className="image" />
         <div className="info">
           <div className="text">
