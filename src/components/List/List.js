@@ -42,7 +42,7 @@ export const List = ({ shows }) => {
   return (
     <>
       <div>
-        <h3 className="text-results">No results for search term</h3>
+        <h3 className="text-results">No results</h3>
       </div>
     </>
   );

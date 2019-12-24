@@ -1,17 +1,20 @@
 import React from "react";
 
 import "./card.scss";
-import { IMG_PLACEHOLDER_LOADING } from "utils/constants";
-
-function setImagePlaceholder(image) {
-  return image ? image : IMG_PLACEHOLDER_LOADING;
-}
+import Image from "react-graceful-image";
 
 const CardView = ({ image, name, genres }) => {
   return (
     <>
       <div className="content animate-fadein">
-        <img src={setImagePlaceholder(image)} alt="banner" className="image" />
+        <Image
+          src={image}
+          alt="banner"
+          width="210"
+          height="295"
+          className="image"
+          placeholderColor="#3b3939"
+        />
         <div className="info">
           <div className="text">
             <h4>{name}</h4>

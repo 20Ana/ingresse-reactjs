@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { API, IMG_PLACEHOLDER } from "../utils/constants";
+const API = "https://api.tvmaze.com";
 
 export const search = async query => {
   const result = await axios(`${API}/search/shows?q=${query}`);
@@ -10,7 +10,7 @@ export const search = async query => {
     const { show } = s;
 
     show.genres = genreArrToStr(show.genres);
-    show.image = imageUrl(show.image, show.name);
+    show.image = show.image ? show.image.medium : null;
 
     return show;
   });
@@ -21,7 +21,8 @@ export const search = async query => {
 export const getShow = async id => {
   const result = await axios.get(`${API}/shows/${id}`);
   const { data } = result;
-  data.image = imageUrl(data.image, data.name);
+
+  data.image = data.image ? data.image.medium : null;
   data.genres = genreArrToStr(data.genres);
   data.summary = noSummaryText(data.summary);
   data.premiered = dateFormatText(data.premiered);
@@ -33,16 +34,8 @@ function genreArrToStr(genres) {
   return genres.length > 0 ? genres.join(", ") : "No genre.";
 }
 
-function imageUrl(arr, nameShow) {
-  return arr !== null ? arr.medium : generatePlaceholderImg(nameShow);
-}
-
 function noSummaryText(resume) {
   return resume !== null ? resume : "No summary.";
-}
-
-function generatePlaceholderImg(name) {
-  return `${IMG_PLACEHOLDER}${name}`;
 }
 
 function dateFormatText(date) {

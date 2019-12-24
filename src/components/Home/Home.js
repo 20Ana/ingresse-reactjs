@@ -8,13 +8,13 @@ export default function Home() {
   const [data, setData] = useState({ shows: [] });
   const [query, setQuery] = useState(null);
 
-  const fetchData = async () => {
-    const result = await search(query);
-
-    if (result !== undefined && result !== null) setData(result);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const result = await search(query);
+
+      if (result !== undefined && result !== null) setData(result);
+    };
+
     if (query !== null) fetchData();
   }, [query]);
 
