@@ -4,9 +4,31 @@
   margin: 2rem;
   .content-info {
     color: #fff;
+  }
+}
 
-    .title-content {
-      text-transform: uppercase;
-    }
+.arrow {
+  display: flex;
+  align-items: center;
+  .btn-arrow {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 1rem;
+  }
+  .title-arrow {
+    color: #fff;
+    font-weight: 300;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .image-align-mobile {
+    text-align: center;
+  }
+
+  .title-content {
+    text-align: center;
   }
 }

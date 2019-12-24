@@ -20,7 +20,7 @@ export const List = ({ shows }) => {
   if (shows.length > 0) {
     return (
       <>
-        <Row horizontal="left">
+        <Row horizontal="center">
           {shows.map(show => {
             return (
               <Col xs={3} sm={3} key={show.id} style={customCol}>

@@ -1,0 +1,19 @@
+.content-search {
+  position: relative;
+  input.input-search.aph-form-control {
+    border-radius: 45px;
+    background: linear-gradient(90deg, #2b2f383b 0%, #040d1c00 60%) no-repeat
+      fixed;
+    color: #fff;
+    padding-left: 35px;
+    line-height: 17px;
+  }
+
+  .icon-search {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 10px;
+    fill: #fff;
+  }
+}

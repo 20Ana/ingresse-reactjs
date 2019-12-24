@@ -5,3 +5,13 @@
   font-style: italic;
   font-weight: 100;
 }
+
+@media only screen and (max-width: 600px) {
+  .aph-row {
+    flex-direction: column;
+
+    .aph-col {
+      max-width: none;
+    }
+  }
+}

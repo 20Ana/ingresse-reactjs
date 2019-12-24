@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Routes } from "./routes";
 import "./App.scss";
+import { Routes } from "./routes";
 import { Container } from "aphrodite-react";
 
 function App() {

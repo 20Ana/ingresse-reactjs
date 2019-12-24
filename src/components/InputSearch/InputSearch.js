@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./input-search.scss";
+import MagnifyingGlass from "components/Icons/MagnifyingGlass";
 import { Input } from "aphrodite-react";
 
 function debounce(func, wait, immediate) {
@@ -24,13 +26,17 @@ const customInput = {
 };
 
 const InputSearch = ({ setQuery }) => (
-  <Input
-    type="text"
-    id="search"
-    placeholder="Search..."
-    styles={customInput}
-    onChange={debounce(e => setQuery(e.target.value), 300)}
-  />
+  <div className="content-search">
+    <MagnifyingGlass width="16" height="16" className="icon-search" />
+    <Input
+      type="text"
+      id="search"
+      placeholder="Search"
+      styles={customInput}
+      className="input-search"
+      onChange={debounce(e => setQuery(e.target.value), 300)}
+    />
+  </div>
 );
 
 export default InputSearch;
